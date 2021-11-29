@@ -70,13 +70,32 @@ class DockerManager:
         self.get_volume(volume_name).remove()
 
     def get_networks(self) -> List[Network]:
+        """
+        Get all networks
+        :return: a list of networks
+        """
         return self.client.networks.list()
 
     def get_network(self, network_id) -> Network:
+        """
+        Find a network by its id
+        :param network_id: The id to search for
+        :return: The network if present
+        """
         return self.client.networks.get(network_id=network_id)
 
     def create_network(self, name) -> Network:
+        """
+        Create network with the given name
+        :param name: The name of the network
+        :return: Returns the network created
+        """
         return self.client.networks.create(name)
 
     def remove_network(self, network_id):
+        """
+        Remove the network with the given id
+        :param network_id:
+        :return:
+        """
         self.get_network(network_id).remove()
